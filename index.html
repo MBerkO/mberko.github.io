@@ -1,23 +1,84 @@
 <!DOCTYPE html>
 <html lang="tr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="keywords" content="Mehmet Berk Örüncü, MBerkO, tıp, iç hastalıkları, bilim, teknoloji">
-        <meta name="author" content="Mehmet Berk Örüncü">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="styles.css">
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
-        <title>Mehmet Berk Örüncü</title>
-        <script src="myScript.js"></script>
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mehmet Berk Örüncü - İç Hastalıkları Uzmanı ve Tıbbi Onkoloji Asistanı">
+    <meta name="keywords" content="Mehmet Berk Örüncü, MBerkO, tıp, iç hastalıkları, onkoloji, bilim, teknoloji">
+    <meta name="author" content="Mehmet Berk Örüncü">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Mehmet Berk Örüncü">
+    <meta property="og:description" content="İç Hastalıkları Uzmanı ve Tıbbi Onkoloji Asistanı">
+    <meta property="og:image" content="p01.jpg">
+    <meta property="og:url" content="https://mberko.github.io">
+
+    <title>Mehmet Berk Örüncü</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
 <body>
-    <img src="p01.jpg">
-    <h1>Mehmet Berk Örüncü</h1>
-    <p>İç hastalıkları uzmanı ve tıbbi onkoloji asistanı</p>
-    <footer>
-        <a href="https://mberko.com">Tumblr</a> • 
-        <a href="https://X.com/MBOMBerkO">X</a> •
-        <a href="https://bsky.app/profile/mberko.bsky.social">Bluesky</a>
-    </footer>
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" aria-label="Toggle Dark Mode">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <main class="container">
+        <img src="p01.jpg" alt="Mehmet Berk Örüncü" class="profile-img">
+
+        <h1>Mehmet Berk Örüncü</h1>
+        <p class="subtitle">İç Hastalıkları Uzmanı ve Tıbbi Onkoloji Asistanı</p>
+
+        <nav class="social-links">
+            <a href="https://mberko.com" target="_blank" aria-label="Tumblr">
+                <!-- Tumblr Icon (Official) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z" />
+                </svg>
+            </a>
+            <a href="https://X.com/MBOMBerkO" target="_blank" aria-label="X">
+                <!-- X Icon (Official) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" />
+                </svg>
+            </a>
+            <a href="https://bsky.app/profile/mberko.bsky.social" target="_blank" aria-label="Bluesky">
+                <!-- Bluesky Icon (Official) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M5.202 2.857C7.954 4.922 10.913 9.11 12 11.358c1.087-2.247 4.046-6.436 6.798-8.501C20.783 1.366 24 .213 24 3.883c0 .732-.42 6.156-.667 7.037-.856 3.061-3.978 3.842-6.755 3.37 4.854.826 6.089 3.562 3.422 6.299-5.065 5.196-7.28-1.304-7.847-2.97-.104-.305-.152-.448-.153-.327 0-.121-.05.022-.153.327-.568 1.666-2.782 8.166-7.847 2.97-2.667-2.737-1.432-5.473 3.422-6.3-2.777.473-5.899-.308-6.755-3.369C.42 10.04 0 4.615 0 3.883c0-3.67 3.217-2.517 5.202-1.026" />
+                </svg>
+            </a>
+        </nav>
+    </main>
+
+    <script src="myScript.js"></script>
 </body>
+
 </html>
