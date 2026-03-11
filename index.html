@@ -16,12 +16,45 @@
 
     <title>Mehmet Berk Örüncü</title>
 
-    <!-- Google Fonts: Inter -->
+    <!-- Early theme application to prevent FOUC -->
+    <script>
+        (function(){var t=localStorage.getItem('theme-preference')||
+        (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+        document.documentElement.setAttribute('data-theme',t)})();
+    </script>
+
+    <!-- Preload LCP image -->
+    <link rel="preload" href="profile.jpg" as="image">
+
+    <!-- Google Fonts: Inter (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"></noscript>
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- Critical CSS inlined -->
+    <style>
+        :root{--bg-color:#fff;--text-color:#111;--secondary-text:#666;--icon-color:#111;--icon-hover:#000;--border-color:#eaeaea;--transition-speed:.3s}
+        [data-theme="dark"]{--bg-color:#0a0a0a;--text-color:#ededed;--secondary-text:#888;--icon-color:#ededed;--icon-hover:#fff;--border-color:#333}
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'Inter',system-ui,-apple-system,sans-serif;background-color:var(--bg-color);color:var(--text-color);display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;text-align:center}
+        #theme-toggle{position:absolute;top:24px;right:24px;background:none;border:none;cursor:pointer;color:var(--text-color);padding:8px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+        .sun-icon{display:block}.moon-icon{display:none}
+        [data-theme="dark"] .sun-icon{display:none}[data-theme="dark"] .moon-icon{display:block}
+        .container{max-width:400px;width:100%}
+        .profile-img{width:160px;height:160px;border-radius:50%;object-fit:cover;margin-bottom:24px;opacity:.8}
+        h1{font-size:2rem;font-weight:700;margin-bottom:12px;letter-spacing:-.03em}
+        .subtitle{font-size:1.1rem;color:var(--secondary-text);font-weight:400;margin-bottom:36px}
+        .social-links{display:flex;justify-content:center;gap:32px}
+        .social-links a{color:var(--icon-color);text-decoration:none;display:inline-block;opacity:.8}
+        .social-links svg{width:32px;height:32px}
+    </style>
+    <!-- Full CSS (non-blocking, includes transitions & hover effects) -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
@@ -52,7 +85,7 @@
     </button>
 
     <main class="container">
-        <img src="profile.jpg" alt="Mehmet Berk Örüncü" class="profile-img">
+        <img src="profile.jpg" alt="Mehmet Berk Örüncü" class="profile-img" width="160" height="160" fetchpriority="high" decoding="async">
 
         <h1>Mehmet Berk Örüncü</h1>
         <p class="subtitle">İç Hastalıkları Uzmanı ve Tıbbi Onkoloji Asistanı</p>
