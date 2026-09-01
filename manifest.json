@@ -1,6 +1,11 @@
 {
   "name": "Mehmet Berk Örüncü",
-  "short_name": "mberko",
+  "short_name": "MBerkO",
+  "description": "Mehmet Berk Örüncü - İç Hastalıkları ve Tıbbi Onkoloji Uzmanı",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "favicon.svg",
@@ -12,8 +17,5 @@
       "sizes": "180x180",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }
