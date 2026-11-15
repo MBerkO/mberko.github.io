@@ -40,19 +40,14 @@ body {
     transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-/* Top Controls (Language & Theme) */
-.top-controls {
+/* Theme Toggle Button */
+#theme-toggle {
     position: absolute;
     top: 24px;
     right: 24px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    z-index: 10;
-}
-
-.top-controls button {
+    width: 38px;
     height: 38px;
+    border-radius: 50%;
     background: transparent;
     border: 1px solid var(--border-color);
     cursor: pointer;
@@ -61,40 +56,20 @@ body {
     align-items: center;
     justify-content: center;
     transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+    z-index: 10;
 }
 
-.top-controls button:hover {
+#theme-toggle:hover {
     background-color: var(--border-color);
 }
 
-.top-controls button:focus-visible {
+#theme-toggle:focus-visible {
     outline: 2px solid var(--text-color);
     outline-offset: 3px;
 }
 
-#theme-toggle {
-    width: 38px;
-    border-radius: 50%;
-}
-
-#lang-toggle {
-    font-family: inherit;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    padding: 0 12px;
-    border-radius: 19px;
-    line-height: 1;
-}
-
 [data-theme="dark"] .moon-icon,
 :root:not([data-theme="dark"]) .sun-icon {
-    display: none;
-}
-
-/* Language Visibility */
-html[lang="tr"] [data-lang="en"],
-html[lang="en"] [data-lang="tr"] {
     display: none;
 }
 
