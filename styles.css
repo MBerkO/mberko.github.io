@@ -2,10 +2,7 @@
     --bg-color: #ffffff;
     --text-color: #111111;
     --secondary-text: #666666;
-    --icon-color: #111111;
-    --icon-hover: #000000;
     --border-color: #eaeaea;
-    --focus-ring: rgba(0, 0, 0, 0.25);
     --transition-speed: 0.3s;
     color-scheme: light;
 }
@@ -14,10 +11,7 @@
     --bg-color: #0a0a0a;
     --text-color: #ededed;
     --secondary-text: #888888;
-    --icon-color: #ededed;
-    --icon-hover: #ffffff;
     --border-color: #333333;
-    --focus-ring: rgba(255, 255, 255, 0.35);
     color-scheme: dark;
 }
 
@@ -38,7 +32,7 @@ body {
     align-items: center;
     min-height: 100vh;
     min-height: 100dvh;
-    padding: 24px;
+    padding: 76px 24px;
     text-align: center;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -46,51 +40,67 @@ body {
     transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-/* Theme Toggle Button */
-#theme-toggle {
+/* Top Controls (Language & Theme) */
+.top-controls {
     position: absolute;
     top: 24px;
     right: 24px;
-    background: transparent;
-    border: 1px solid transparent;
-    cursor: pointer;
-    color: var(--text-color);
-    padding: 8px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    gap: 8px;
+    z-index: 10;
 }
 
-#theme-toggle:hover {
+.top-controls button {
+    height: 38px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    color: var(--text-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+.top-controls button:hover {
     background-color: var(--border-color);
 }
 
-#theme-toggle:focus-visible {
+.top-controls button:focus-visible {
     outline: 2px solid var(--text-color);
     outline-offset: 3px;
 }
 
-.sun-icon {
-    display: block;
+#theme-toggle {
+    width: 38px;
+    border-radius: 50%;
 }
 
-.moon-icon {
+#lang-toggle {
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0 12px;
+    border-radius: 19px;
+    line-height: 1;
+}
+
+[data-theme="dark"] .moon-icon,
+:root:not([data-theme="dark"]) .sun-icon {
     display: none;
 }
 
-[data-theme="dark"] .sun-icon {
+/* Language Visibility */
+html[lang="tr"] [data-lang="en"],
+html[lang="en"] [data-lang="tr"] {
     display: none;
-}
-
-[data-theme="dark"] .moon-icon {
-    display: block;
 }
 
 /* Main Container */
 .container {
-    max-width: 420px;
+    max-width: 480px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -104,12 +114,8 @@ body {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 24px;
-    opacity: 0.8;
-    transition: opacity var(--transition-speed) ease;
-}
-
-.profile-img:hover {
-    opacity: 1;
+    border: 1px solid var(--border-color);
+    transition: border-color var(--transition-speed) ease;
 }
 
 /* Typography */
@@ -119,6 +125,7 @@ h1 {
     margin-bottom: 10px;
     letter-spacing: -0.03em;
     line-height: 1.25;
+    text-wrap: balance;
 }
 
 .subtitle {
@@ -127,6 +134,7 @@ h1 {
     font-weight: 400;
     margin-bottom: 32px;
     line-height: 1.5;
+    text-wrap: balance;
     transition: color var(--transition-speed) ease;
 }
 
@@ -139,7 +147,7 @@ h1 {
 }
 
 .social-links a {
-    color: var(--icon-color);
+    color: var(--text-color);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -150,7 +158,6 @@ h1 {
 
 .social-links a:hover {
     opacity: 1;
-    color: var(--icon-hover);
 }
 
 .social-links a:focus-visible {

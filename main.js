@@ -1,47 +1,54 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleButton = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-    const themeColorMeta = document.getElementById('theme-color-meta');
-    const storageKey = 'theme-preference';
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+const html = document.documentElement;
+const themeBtn = document.getElementById('theme-toggle');
+const langBtn = document.getElementById('lang-toggle');
+const themeColorMeta = document.getElementById('theme-color-meta');
+const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+const labeledElements = document.querySelectorAll('[data-aria-tr]');
 
-    const applyTheme = (theme, persist = true) => {
-        htmlElement.setAttribute('data-theme', theme);
+const themeLabels = {
+    tr: { dark: 'Açık temaya geç', light: 'Koyu temaya geç' },
+    en: { dark: 'Switch to light theme', light: 'Switch to dark theme' }
+};
 
-        if (persist) {
-            localStorage.setItem(storageKey, theme);
-        }
+const updateThemeLabel = () => {
+    const theme = html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const lang = html.getAttribute('lang') === 'en' ? 'en' : 'tr';
+    const label = themeLabels[lang][theme];
+    themeBtn.setAttribute('aria-label', label);
+    themeBtn.setAttribute('title', label);
+};
 
-        // Update mobile browser chrome color
-        if (themeColorMeta) {
-            themeColorMeta.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#ffffff');
-        }
+const applyTheme = (theme, persist = false) => {
+    html.setAttribute('data-theme', theme);
+    if (persist) localStorage.setItem('theme-preference', theme);
+    themeColorMeta.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#ffffff');
+    updateThemeLabel();
+};
 
-        // Update button accessibility labels
-        if (toggleButton) {
-            const nextAction = theme === 'dark' ? 'Açık temaya geç' : 'Koyu temaya geç';
-            toggleButton.setAttribute('aria-label', nextAction);
-            toggleButton.setAttribute('title', nextAction);
-        }
-    };
-
-    // Synchronize initial state with current theme
-    const currentTheme = htmlElement.getAttribute('data-theme') || (mediaQuery.matches ? 'dark' : 'light');
-    applyTheme(currentTheme, false);
-
-    // Toggle button click handler
-    if (toggleButton) {
-        toggleButton.addEventListener('click', () => {
-            const activeTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme, true);
-        });
-    }
-
-    // Listen for OS color scheme change if user hasn't chosen manually
-    mediaQuery.addEventListener('change', (e) => {
-        if (!localStorage.getItem(storageKey)) {
-            applyTheme(e.matches ? 'dark' : 'light', false);
-        }
+const applyLanguage = (lang, persist = false) => {
+    html.setAttribute('lang', lang);
+    if (persist) localStorage.setItem('lang-preference', lang);
+    labeledElements.forEach((el) => {
+        const label = el.getAttribute(`data-aria-${lang}`);
+        el.setAttribute('aria-label', label);
+        if (el.hasAttribute('title')) el.setAttribute('title', label);
     });
+    updateThemeLabel();
+};
+
+// Sync initial state set by inline head script
+applyLanguage(html.getAttribute('lang') === 'en' ? 'en' : 'tr');
+
+themeBtn.addEventListener('click', () => {
+    applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
+});
+
+langBtn.addEventListener('click', () => {
+    applyLanguage(html.getAttribute('lang') === 'en' ? 'tr' : 'en', true);
+});
+
+mediaQuery.addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme-preference')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+    }
 });

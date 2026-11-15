@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mehmet Berk Örüncü</title>
     <meta name="description" content="Mehmet Berk Örüncü - İç Hastalıkları ve Tıbbi Onkoloji Uzmanı">
-    <meta name="keywords" content="Mehmet Berk Örüncü, MBerkO, tıp, iç hastalıkları, onkoloji, bilim, teknoloji">
+    <meta name="keywords" content="Mehmet Berk Örüncü, MBerkO, tıp, iç hastalıkları, onkoloji, bilim, teknoloji, medicine, internal medicine, medical oncology">
     <meta name="author" content="Mehmet Berk Örüncü">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mehmetberkoruncu.com/">
@@ -29,22 +29,24 @@
     <meta name="twitter:image" content="https://mehmetberkoruncu.com/profile.jpg">
     <meta name="twitter:creator" content="@MBOMBerkO">
 
-    <!-- Early theme application to prevent FOUC -->
+    <!-- Early theme and language application to prevent FOUC -->
     <script>
         (function () {
             var theme = localStorage.getItem('theme-preference') ||
                 (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
             document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('theme-color-meta').content = theme === 'dark' ? '#0a0a0a' : '#ffffff';
+
+            var lang = localStorage.getItem('lang-preference') ||
+                (navigator.language && navigator.language.toLowerCase().startsWith('tr') ? 'tr' : 'en');
+            document.documentElement.setAttribute('lang', lang);
         })();
     </script>
-
-    <!-- Preload LCP image -->
-    <link rel="preload" href="profile.jpg" as="image" fetchpriority="high">
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -60,59 +62,65 @@
 
 <body>
 
-    <!-- Theme Toggle Button -->
-    <button id="theme-toggle" type="button" aria-label="Koyu temaya geç" title="Koyu temaya geç">
-        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-    </button>
+    <!-- Top Controls (Language & Theme) -->
+    <header class="top-controls">
+        <button id="lang-toggle" type="button" aria-label="Switch to English" title="Switch to English"
+            data-aria-tr="Switch to English" data-aria-en="Türkçe sürüme geç">
+            <span data-lang="tr">EN</span>
+            <span data-lang="en">TR</span>
+        </button>
+        <button id="theme-toggle" type="button" aria-label="Koyu temaya geç" title="Koyu temaya geç">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </header>
 
     <main class="container">
         <img src="profile.jpg" alt="Mehmet Berk Örüncü" class="profile-img" width="160" height="160" fetchpriority="high">
 
         <h1>Mehmet Berk Örüncü</h1>
-        <p class="subtitle">İç Hastalıkları ve Tıbbi Onkoloji Uzmanı</p>
+        <p class="subtitle">
+            <span data-lang="tr">İç Hastalıkları ve Tıbbi Onkoloji Uzmanı</span>
+            <span data-lang="en">Internal Medicine Specialist & Medical Oncologist</span>
+        </p>
 
-        <nav class="social-links" aria-label="Sosyal Bağlantılar">
-            <a href="https://github.com/mberko" target="_blank" rel="noopener noreferrer me" aria-label="GitHub Profilim">
+        <nav class="social-links" aria-label="Sosyal Bağlantılar" data-aria-tr="Sosyal Bağlantılar" data-aria-en="Social Links">
+            <a href="https://github.com/mberko" target="_blank" rel="noopener noreferrer me" aria-label="GitHub Profilim"
+                data-aria-tr="GitHub Profilim" data-aria-en="GitHub Profile">
                 <!-- GitHub Icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path
                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
             </a>
-            <a href="https://mberko.com" target="_blank" rel="noopener noreferrer me" aria-label="Tumblr Blogum">
+            <a href="https://mberko.com" target="_blank" rel="noopener noreferrer me" aria-label="Tumblr Blogum"
+                data-aria-tr="Tumblr Blogum" data-aria-en="Tumblr Blog">
                 <!-- Tumblr Icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path
                         d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z" />
                 </svg>
             </a>
-            <a href="https://X.com/MBOMBerkO" target="_blank" rel="noopener noreferrer me" aria-label="X (Twitter) Profilim">
+            <a href="https://X.com/MBOMBerkO" target="_blank" rel="noopener noreferrer me" aria-label="X (Twitter) Profilim"
+                data-aria-tr="X (Twitter) Profilim" data-aria-en="X (Twitter) Profile">
                 <!-- X Icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path
                         d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" />
-                </svg>
-            </a>
-            <a href="https://bsky.app/profile/mberko.bsky.social" target="_blank" rel="noopener noreferrer me" aria-label="Bluesky Profilim">
-                <!-- Bluesky Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                        d="M5.202 2.857C7.954 4.922 10.913 9.11 12 11.358c1.087-2.247 4.046-6.436 6.798-8.501C20.783 1.366 24 .213 24 3.883c0 .732-.42 6.156-.667 7.037-.856 3.061-3.978 3.842-6.755 3.37 4.854.826 6.089 3.562 3.422 6.299-5.065 5.196-7.28-1.304-7.847-2.97-.104-.305-.152-.448-.153-.327 0-.121-.05.022-.153.327-.568 1.666-2.782 8.166-7.847 2.97-2.667-2.737-1.432-5.473 3.422-6.3-2.777.473-5.899-.308-6.755-3.369C.42 10.04 0 4.615 0 3.883c0-3.67 3.217-2.517 5.202-1.026" />
                 </svg>
             </a>
         </nav>

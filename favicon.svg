@@ -6,17 +6,10 @@
       .icon-fill { fill: #ffffff; }
       .icon-stroke { stroke: #ffffff; }
     }
-    @media (prefers-color-scheme: light) {
-      .icon-fill { fill: #000000; }
-      .icon-stroke { stroke: #000000; }
-    }
   </style>
   <!-- Frame -->
   <rect x="5" y="5" width="90" height="90" fill="none" stroke-width="10" class="icon-stroke" />
   
   <!-- Network Structure -->
-  <rect x="20" y="20" width="60" height="10" class="icon-fill" /> <!-- Top Bar -->
-  <rect x="20" y="20" width="10" height="60" class="icon-fill" /> <!-- Left Leg -->
-  <rect x="45" y="20" width="10" height="60" class="icon-fill" /> <!-- Center Leg -->
-  <rect x="70" y="20" width="10" height="60" class="icon-fill" /> <!-- Right Leg -->
+  <path d="M20 20h60v60H70V30H55v50H45V30H30v50H20z" class="icon-fill" />
 </svg>
